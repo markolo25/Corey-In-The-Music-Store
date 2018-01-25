@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MvcMusicStore.Models;
 
 namespace MvcMusicStore.Controllers
@@ -35,7 +37,7 @@ namespace MvcMusicStore.Controllers
         }
 
         // GET: /Store/GenreMenu
-        [ChildActionOnly]
+        //[ChildActionOnly] //TODO
         public ActionResult GenreMenu()
         {
             var genres = storeDB.Genres.ToList();
