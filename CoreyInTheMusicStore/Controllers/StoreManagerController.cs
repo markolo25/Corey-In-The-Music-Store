@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcMusicStore.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MvcMusicStore.Controllers
 {
@@ -49,6 +50,11 @@ namespace MvcMusicStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AlbumId,GenreId,ArtistId,Title,Price,AlbumArtUrl")] Album album)
         {
+            if (album == null)
+            {
+                throw new System.ArgumentNullException(nameof(album));
+            }
+
             if (ModelState.IsValid)
             {
                 db.Albums.Add(album);
